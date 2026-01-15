@@ -11,7 +11,7 @@ const Footer = () => {
         {/* BRAND */}
         <div>
           <h3 className="text-xl font-bold text-lightHeading dark:text-heading mb-4">
-            MakeMyTrip
+            TRIPKART
           </h3>
           <p className="text-sm text-lightMutedText dark:text-mutedText leading-relaxed">
             Your trusted travel partner for flights, hotels, holiday packages,
@@ -119,7 +119,7 @@ const Footer = () => {
 
       {/* BOTTOM BAR */}
       <div className="text-center py-6 text-sm text-lightMutedText dark:text-mutedText border-t border-lightBorder dark:border-border">
-        © {new Date().getFullYear()} MakeMyTrip Rebrand. All rights reserved.
+        © {new Date().getFullYear()} TRIPKART. All rights reserved.
       </div>
     </footer>
   );

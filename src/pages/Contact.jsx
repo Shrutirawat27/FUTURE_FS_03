@@ -6,8 +6,47 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline";
 import { FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { useState } from "react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
 const Contact = () => {
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!firstName || !email || !message) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  try {
+    setLoading(true);
+
+    await addDoc(collection(db, "contacts"), {
+      firstName,
+      email,
+      message,
+      createdAt: serverTimestamp(),
+    });
+
+    alert("Message sent successfully!");
+
+    setFirstName("");
+    setEmail("");
+    setMessage("");
+  } catch (error) {
+    console.error("Error sending message:", error);
+    alert("Something went wrong");
+  } finally {
+    setLoading(false);
+  }
+};
+
   return (
     <Layout>
       {/* Mobile: py-12 px-4 | Desktop: py-24 px-6 (Unchanged) */}
@@ -53,24 +92,40 @@ const Contact = () => {
             </div>
 
             {/* FORM */}
-            <form className="space-y-5 md:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <Input label="First Name" placeholder="John" />
-                <Input label="Email Address" placeholder="john@example.com" />
+                <Input
+  label="First Name"
+  placeholder="John"
+  value={firstName}
+  onChange={(e) => setFirstName(e.target.value)}
+/>
+
+                <Input
+  label="Email Address"
+  placeholder="john@example.com"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
+
               </div>
 
-              <Textarea />
+              <Textarea
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+/>
+
 
               <div className="flex justify-center pt-4 md:pt-6">
                 <button
-                  type="submit"
+                  type="submit" disabled={loading}
                   // Mobile: w-full px-8 | Desktop: w-auto px-16 (Unchanged)
                   className="w-full md:w-auto px-8 md:px-16 py-3 md:py-4 rounded-full
                     bg-lightCta dark:bg-cta
                     text-white font-bold tracking-wide
                     shadow-neon hover:scale-105 transition-transform"
                 >
-                  SEND MESSAGE
+                  {loading ? "SENDING..." : "SEND MESSAGE"}
                 </button>
               </div>
             </form>
@@ -108,7 +163,7 @@ const Contact = () => {
 
 /* ---------------- COMPONENTS ---------------- */
 
-const Input = ({ label, placeholder }) => (
+const Input = ({ label, placeholder, value, onChange }) => (
   <div className="flex flex-col gap-2">
     <label className="text-xs font-bold uppercase tracking-widest
       text-lightMutedText dark:text-mutedText ml-3"
@@ -117,6 +172,8 @@ const Input = ({ label, placeholder }) => (
     </label>
     <input
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
       // Mobile: py-3 px-5 | Desktop: py-4 px-6 (Unchanged)
       className="w-full rounded-2xl px-5 py-3 md:px-6 md:py-4
         bg-white/30 dark:bg-background/30
@@ -129,7 +186,7 @@ const Input = ({ label, placeholder }) => (
   </div>
 );
 
-const Textarea = () => (
+const Textarea = ({ value, onChange }) => (
   <div className="flex flex-col gap-2">
     <label className="text-xs font-bold uppercase tracking-widest
       text-lightMutedText dark:text-mutedText ml-3"
@@ -139,6 +196,8 @@ const Textarea = () => (
     <textarea
       rows="4"
       placeholder="How can we help you?"
+      value={value}
+      onChange={onChange}
       // Mobile: py-3 px-5 | Desktop: py-4 px-6 (Unchanged)
       className="w-full rounded-2xl px-5 py-3 md:px-6 md:py-4
         bg-white/30 dark:bg-background/30

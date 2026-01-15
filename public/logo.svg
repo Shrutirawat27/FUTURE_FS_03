@@ -1,0 +1,42 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* Default (Light Mode) Colors */
+    .wave { fill: #0c1320; }       /* Navy Wave */
+    .ring { stroke: #0891b2; }     /* Darker Cyan Ring */
+    
+    /* The Plane Fix: paint-order added so stroke goes BEHIND the plane */
+    .plane { 
+      fill: #0c1320; 
+      stroke: #F0F4F8; 
+      paint-order: stroke; 
+    }
+
+    /* Dark Mode Overrides (Browser automatically detects this) */
+    @media (prefers-color-scheme: dark) {
+      .wave { fill: #F9FAFB; }     /* White Wave */
+      .ring { stroke: #00d1ff; }   /* Neon Cyan Ring */
+      .plane { 
+        fill: #00d1ff; 
+        stroke: #0c1320; 
+      }
+    }
+  </style>
+
+  <path 
+    class="wave"
+    d="M50 90C72.0914 90 90 72.0914 90 50C90 45 88 40 85 36C80 45 70 48 60 42C50 36 40 38 30 45C24 49 20 50 15 48C11.5 56 10 65 10 50C10 72.0914 27.9086 90 50 90Z" 
+  />
+  
+  <path 
+    class="ring"
+    d="M82 28C75 19 63 12 50 12C29.0132 12 12 29.0132 12 50C12 70.9868 29.0132 88 50 88C70.9868 88 88 70.9868 88 50C88 45 87 40 85 36" 
+    stroke-width="10" 
+    stroke-linecap="round"
+  />
+
+  <path 
+    class="plane"
+    d="M88 12L70 28L62 24L58 28L70 36L74 48L78 44L76 34L94 16L88 12Z" 
+    stroke-width="6" 
+  />
+</svg>

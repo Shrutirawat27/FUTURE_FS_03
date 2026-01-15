@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans font-normal text-lightHeading dark:text-heading bg-lightBackground dark:bg-background;
+  }
+
+  h1 {
+    @apply font-heading font-extrabold;
+  }
+
+  h2 {
+    @apply font-heading font-bold;
+  }
+
+  h3, h4 {
+    @apply font-heading font-semibold;
+  }
+
+  /* Dark mode card improvements */
+  .dark .card {
+    @apply bg-gray-900/90 shadow-innerDark border-white/10;
+  }
+
+  /* Hero section in dark mode */
+  .dark .hero-section {
+    @apply bg-gradient-to-b from-[#081026] via-[#0a192f] to-[#0c1b3a];
+  }
+}
+
+/* Slick arrows - light mode */
+.slick-prev:before,
+.slick-next:before {
+  color: #00d1ff; /* dark gray (matches lightHeading) */
+  font-size: 28px;
+}
+
+/* Dark mode arrows */
+.dark .slick-prev:before,
+.dark .slick-next:before {
+  color: #ffffff;
+}

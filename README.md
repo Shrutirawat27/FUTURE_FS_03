@@ -28,7 +28,7 @@ The objective of this task was to **rebrand and develop a travel booking website
 - Razorpay for payment processing  
 
 ## 🌐 Live Demo
-🔗 [MakeMyTrip Rebrand Website](#) <!-- replace # with actual deployed link -->
+🔗 [MakeMyTrip Rebrand Website](https://tripkart-nine.vercel.app/) 
 
 ## 📸 Screenshots
 ![Screenshot](public/Home.png)

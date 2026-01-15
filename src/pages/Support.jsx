@@ -26,7 +26,7 @@ const Support = () => {
                 Contact Details
               </h2>
               <p className="text-sm text-lightMutedText dark:text-mutedText mb-2">
-                📧 Email: support@makemytrip.com
+                📧 Email: support@tripkart.com
               </p>
               <p className="text-sm text-lightMutedText dark:text-mutedText mb-2">
                 📞 Phone: +91 98765 43210

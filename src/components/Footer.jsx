@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaInstagram, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FaInstagram, FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -84,7 +84,7 @@ const Footer = () => {
           </h4>
           <div className="flex gap-4">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/shrutirawat0208"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -94,17 +94,17 @@ const Footer = () => {
             </a>
 
             <a
-              href="https://twitter.com"
+              href="https://github.com/Shrutirawat27"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Twitter"
+              aria-label="GitHub"
               className="p-3 rounded-full bg-lightCta/10 dark:bg-cta/10 text-lightCta dark:text-cta hover:scale-110 transition"
             >
-              <FaTwitter />
+              <FaGithub />
             </a>
 
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/shruti-rawat-6b7969314/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
